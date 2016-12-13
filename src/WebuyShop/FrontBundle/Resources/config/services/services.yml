@@ -1,0 +1,31 @@
+services:
+
+    webuyshop.front.service.user_service:
+        class: WebuyShop\FrontBundle\Service\UserService
+        arguments:
+            - "@webuyshop.front.repositories.user_repository"
+
+    webuyshop.front.service.blog_service:
+        class: WebuyShop\FrontBundle\Service\BlogService
+        arguments:
+            - "@webuyshop.front.repositories.blog_repository"
+
+    webuyshop.front.service.category_service:
+        class: WebuyShop\FrontBundle\Service\CategoryService
+        arguments:
+            - "@webuyshop.front.repositories.category_repository"
+
+    webuyshop.front.service.product_service:
+        class: WebuyShop\FrontBundle\Service\ProductService
+        arguments:
+            - "@webuyshop.front.repositories.product_repository"
+
+    webuyshop.front.service.order_service:
+        class: WebuyShop\FrontBundle\Service\OrderService
+        arguments:
+            - "@webuyshop.front.repositories.order_repository"
+
+    webuyshop.front.service.cart_service:
+        class: WebuyShop\FrontBundle\Service\CartService
+        arguments:
+            - "@webuyshop.front.repositories.cart_repository"

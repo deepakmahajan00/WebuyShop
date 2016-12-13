@@ -1,0 +1,33 @@
+{% extends 'WebuyShopFrontBundle::layout.html.twig' %}
+
+{% block body %}
+
+    {% if order is defined %}
+        {% for data in order %}
+            {% set arrayComment = data.cart.cp.getValues %}
+            {% for item in arrayComment %}
+                <div class="rcorners2">
+                    <section>
+                        <span class="alignleft">
+                            <h2>{{  item.product.title }}</h2>
+                            <h3>{{ item.product.description }}</h3>
+
+                            <p><h3><a class="alignright" href="{{ path('delete_item', {'item': item.id}) }}">remove</a></h3></p>
+                        </span>
+                        <span class="alignright">
+                            {{  item.product.price|number_format(2, '.', ',')  }} INR
+                        </span>
+                    </section>
+                </div>
+
+            {% endfor %}
+        {% endfor %}
+        {% if checkout %}
+            <p>
+                <a class="button" href="{{ path('checkout') }}" style="float: right;">Check-out</a>
+            </p>
+        {% else %}
+            <h1>No item in for checkout</h1>
+        {% endif %}
+    {% endif %}
+{% endblock %}

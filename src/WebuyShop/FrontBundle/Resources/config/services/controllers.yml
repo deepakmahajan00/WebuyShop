@@ -1,0 +1,11 @@
+services:
+    webuyshop.front.abstract_controller:
+        class: WebuyShop\FrontBundle\Controller\AbstractApiController
+        abstract:  true
+        arguments:
+            - "@fos_rest.view_handler"
+            - "@request_stack"
+
+    webuyshop.front.security_controller:
+        class: WebuyShop\FrontBundle\Controller\SecurityController
+        parent: webuyshop.front.abstract_controller

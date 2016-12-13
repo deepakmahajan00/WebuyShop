@@ -1,0 +1,62 @@
+{% extends 'WebuyShopFrontBundle::layout.html.twig' %}
+
+{% block body %}
+    <div class="alignright">
+        <span>Sort By :</span>
+        {% for category in categories %}
+            <a class="navigation-link" href="/{{ category.id }}">{{ category.categoryName }}</a>
+        {% endfor %}
+    </div>
+    <div>
+        {% for product in products %}
+            <div class="rcorners2">
+                <section>
+                    <h2><a class="link" href="/blog/{{ product.id }}">{{ product.title }}</a></h2>
+                    <p>
+                        <span>{{ product.description }}</span>
+                        <span class="alignright">
+                            <a id="add_product_cart" class="button"  href="{{ path('add_cart') }}" url-data="{{ product.id }}" rel="nofollow" style="float: left;">Add Cart</a>
+                        </span>
+                    </p>
+                    <p>
+                    <span class="alignleft"><strong>Category :</strong>
+                        {% for category in product.category %}
+                            <a class="navigation-link" href="/blog-category/{{ category.id }}">{{ category.categoryName }}</a>
+                        {% endfor %}
+                    </span>
+                        <span class="alignright"><strong>Created At :</strong> {{ product.createdAt|date('Y-m-d H:i:s') }}</span>
+                    </p>
+
+                </section>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(document).ready(function() {
+            $('.button').on('click', function(e) {
+                e.preventDefault();
+
+                var $anchor = $(this);
+                var url = $(this).attr('href');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: {
+                        product: $(this).attr('url-data')
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                    },
+                    error: function (response) {
+                        $anchor.after('<span>&#10004; Added! </span>');
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock %}

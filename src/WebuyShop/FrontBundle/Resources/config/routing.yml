@@ -1,0 +1,7 @@
+WebuyShopFrontBundle_homepage:
+    pattern:  /user/{id}/blogs
+    defaults: { _controller: WebuyShopFrontBundle:Default:homepage }
+
+user_routes:
+    resource: "@WebuyShopFrontBundle/Controller"
+    type: annotation

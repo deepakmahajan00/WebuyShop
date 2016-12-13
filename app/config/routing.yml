@@ -1,0 +1,3 @@
+WebuyShopFrontBundle:
+    resource: "@WebuyShopFrontBundle/Resources/config/routing.yml"
+    prefix:   /

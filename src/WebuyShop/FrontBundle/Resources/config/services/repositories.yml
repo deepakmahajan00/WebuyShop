@@ -1,0 +1,43 @@
+services:
+
+    webuyshop.front.repositories.user_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\User]
+
+    webuyshop.front.repositories.blog_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\Blog]
+
+    webuyshop.front.repositories.category_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\Category]
+
+    webuyshop.front.repositories.product_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\Product]
+
+    webuyshop.front.repositories.order_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\Orders]
+
+    webuyshop.front.repositories.cart_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\Cart]
+
+    webuyshop.front.repositories.cart_product_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.default_entity_manager
+        factory_method: getRepository
+        arguments: [WebuyShop\FrontBundle\Entity\CartProduct]

@@ -1,0 +1,39 @@
+{% extends 'WebuyShopFrontBundle::layout.html.twig' %}
+
+{% block body %}
+
+    {% if orders %}
+        {% for data in orders %}
+            <figure> Order :{{ data.id }}</figure>
+            <table class="table">
+                <thead>
+                    <td>Item</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Status</td>
+                </thead>
+            {% set arrayComment = data.cart.cp.getValues %}
+            {% for item in arrayComment %}
+                <tr>
+                    <td>{{  item.product.id }}</td>
+                    <td>{{  item.product.title }}</td>
+                    <td>{{  item.product.price|number_format(2, '.', ',')  }} INR</td>
+                    <td>
+                    {% if data.status == 1 %}
+                        ORDERED
+                    {% elseif data.status == 2 %}
+                        PROCESSED
+                    {% elseif data.status == 3 %}
+                        APPROVED
+                    {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% endfor %}
+
+    {% else %}
+        <h1>No order made yet</h1>
+    {% endif %}
+
+{% endblock %}
